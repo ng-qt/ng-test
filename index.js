@@ -1,1 +1,1 @@
-module.exports = require('./build/Release/ngtest');
+exports.default = require('./build/Release/ngtest.node');

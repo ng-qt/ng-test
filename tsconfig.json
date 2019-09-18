@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"module": "commonjs",
+		"target": "es2017",
+		"importHelpers": true,
+		"allowJs": true,
+		"skipDefaultLibCheck": true,
+		"skipLibCheck": true
+	},
+	"include": ["**/*.ts"],
+	"exclude": ["**/*.spec.ts"]
+}

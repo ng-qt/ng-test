@@ -1,51 +1,50 @@
+// https://myprogrammingnotes.com/simulate-mouse-click-using-qt-test-lib.html
 #include "ng-test.h"
+#include <QtTest/QtTest>
 #include <QWidget>
-#include <QTest>
+#include <qtest_widgets.h>
 #include <napi.h>
-
-//void NgTest:KeyClicks(const Napi::CallbackInfo& info) {
-//	Napi::Env env = info.Env();
-//}
 
 void NgTest::KeyClick(const Napi::CallbackInfo& info) {
 	Napi::Env env = info.Env();
 
-	/*Qt::KeyboardModifiers *qmodifier;
-	int delay = 0;
+	Qt::KeyboardModifiers modifier;
+	int delay;
 
 	if (info.Length() < 2) {
-		Napi::TypeError::New(env, "Wrong number of arguments").ThrowAsJavascriptException();
+		Napi::TypeError::New(env, "Wrong number of arguments").ThrowAsJavaScriptException();
 	}
 
-	Napi::Object widget = info[0].As<Napi::Object>();
-	QWidget qwidget = Napi::ObjectWrap<Widget>::Unwrap(widget);
+	Napi::Object nodeWidget = info[0].As<Napi::Object>();
+	QWidget *widget = Napi::ObjectWrap<QWidget>::Unwrap(nodeWidget);
 
-	if (!info[1].isNumber()) {
+	if (!info[1].IsNumber()) {
 		Napi::TypeError::New(env, "key must be one of Key").ThrowAsJavaScriptException();
 	}
 
-	int key = info[1].As<Napi::Number>().Int32Value(); // static_cast<Qt::Key>(key);
-	Qt::Key *qkey = static_cast<Qt::Key*>(key);
+	int nodeKey = info[1].As<Napi::Number>().Int32Value(); // static_cast<Qt::Key>(key);
+	Qt::Key key = static_cast<Qt::Key>(nodeKey);
 
 	if (info[2]) {
-		if (!info[2].isNumber()) {
+		if (!info[2].IsNumber()) {
 			Napi::TypeError::New(env, "modifier must be one of KeyboardModifier").ThrowAsJavaScriptException();
 		}
 
-		// optional modifier
-		int modifier = info[2].As<Napi::Number>().Int32Value();
-		qmodifier = static_cast<Qt::KeyboardModifiers>(modifier);
-	}*/
+		int nodeModifier = info[2].As<Napi::Number>().Int32Value();
+		modifier = static_cast<Qt::KeyboardModifiers>(nodeModifier);
+	} else {
+		modifier = Qt::NoModifier;
+	}
 
-	/*if (info[3]) {
-	 	// no reason to simulate delay
-		if (!info[3].isNumber()) {
+	if (info[3]) {
+		if (!info[3].IsNumber()) {
 			Napi::TypeError::New(env, "modifier must be one of KeyboardModifier").ThrowAsJavaScriptException();
 		}
-	}*/
 
+		delay = info[1].As<Napi::Number>().Int32Value();
+	} else {
+		delay = -1;
+	}
 
-	// optional delay
-
-	// QTest::keyClick(qwidget, qkey, qmodifier);
+	QTest::keyClick(widget, key, modifier, delay);
 }
