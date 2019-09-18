@@ -1,0 +1,19 @@
+{
+  "name": "@ng-qt/qtest",
+  "typings": "./index.d.ts",
+  "main": "./index.js",
+  "scripts": {
+    "build": "node-gyp rebuild",
+    "clean": "node-gyp clean",
+    "test": "qode node_modules/.bin/jest"
+  },
+  "dependencies": {
+    "node-addon-api": "1.7.1"
+  },
+  "devDependencies": {
+    "@nodegui/nodegui": "0.1.9",
+    "@nodegui/qode": "1.0.5",
+    "node-gyp": "5.0.3"
+  },
+  "gypfile": true
+}
