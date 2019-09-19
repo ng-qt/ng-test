@@ -6,9 +6,9 @@ The recommended way of getting started with contributing is using [Docker](https
 
 > If you already have Qt5 and Node.js installed on your system, and don't want use [Docker](https://docker.com), go over to the [Docker image for Qode](https://github.com/ng-qt/qode-docker-image#environment) and set the same environment variables.
 
-Run the following command below to execute AND/OR run the NG-Test development environment for [Docker](https://docker.com)
+Run the following bash script; to execute AND/OR run the **ng-test** development environment for [Docker](https://docker.com)
 ```
-./docker-dev.sh
+$ ./docker-dev.sh
 ```
 
 #### Requirements
