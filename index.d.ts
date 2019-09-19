@@ -1,6 +1,11 @@
-declare module '@ng-qt/qtest' {
-  import { Key, KeyboardModifier, NodeWidget } from '@nodegui/nodegui';
-  export function keyClick(widget: NodeWidget, key: Key, modifier?: KeyboardModifier, delay?: number): void;
+import { Key, KeyboardModifier, NodeWidget } from '@nodegui/nodegui';
 
-  export function keyClicks(widget: NodeWidget, text: string, modifier?: KeyboardModifier, delay?: number): void;
+export declare class NgTest {
+  constructor(widget: NodeWidget): NgTest;
+
+  keyClick(key: Key | string, modifier?: KeyboardModifier): void;
+
+  keyPress(key: Key | string, modifier?: KeyboardModifier): void;
+
+  // keyClicks(key: Key | string, modifier?: KeyboardModifier): void;
 }

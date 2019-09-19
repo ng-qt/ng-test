@@ -1,6 +1,7 @@
 {
   "sources": [
-    "../src/main.cpp",
+    "../src/utils.cpp",
     "../src/ng-test.cpp",
+    "../src/main.cpp",
   ]
 }
