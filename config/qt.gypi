@@ -1,20 +1,21 @@
 {
-    'variables': {
-    	'qt_home_dir%': '<!(echo $NG_QT_PATH)',
-    },
-    'target_conditions': [
-        ['OS=="linux"', {
-            'include_dirs': [
-                '<(qt_home_dir)/include',
-                '<(qt_home_dir)/include/QtTest',
-                '<(qt_home_dir)/include/QtWidgets',
-                '<(qt_home_dir)/include/QtCore',
-            ],
-            'libraries': [
-                '<(qt_home_dir)/lib/libQt5Widgets.so',
-                '<(qt_home_dir)/lib/libQt5Core.so',
-            		'<(qt_home_dir)/lib/libQt5Test.so',
-            ],
-        }]
-    ],
+  'variables': {
+    'qt_libraries%': '<!(echo $QT_LIBRARIES)',
+    'qt_include%': '<!(echo $QT_INCLUDE_DIRS)',
+  },
+  'target_conditions': [
+    ['OS=="linux"', {
+      'include_dirs': [
+        '<(qt_include)',
+        '<(qt_include)/QtTest',
+        '<(qt_include)/QtWidgets',
+        '<(qt_include)/QtCore',
+      ],
+      'libraries': [
+        '<(qt_libraries)/libQt5Widgets.so',
+        '<(qt_libraries)/libQt5Core.so',
+        '<(qt_libraries)/libQt5Test.so',
+      ],
+    }]
+  ],
 }
