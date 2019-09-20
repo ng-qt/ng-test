@@ -1,0 +1,61 @@
+version: 2
+
+var_1: &job_defaults
+  environment:
+    NAME: ng-test-ci
+  machine:
+    docker_layer_caching: true
+
+var_2: &persist_workspace
+  persist_to_workspace:
+    root: .
+    paths:
+      - .
+
+var_3: &attach_workspace
+  attach_workspace:
+    at: /tmp/workspace
+
+jobs:
+  setup:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - run:
+          name: Setup environment
+          command: |
+            ./docker-dev.sh $NAME
+      - *persist_workspace
+
+  build:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run:
+          name: Build
+          command: |
+            ./docker-dev.sh $NAME yarn build
+      - *persist_workspace
+
+  test:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run:
+          name: Test
+          command: |
+            ./docker-dev.sh $NAME yarn test:ci
+
+workflows:
+  version: 2
+  default_workflow:
+    jobs:
+      - setup
+      - build:
+          requires:
+            - setup
+      - test:
+          requires:
+            - build
