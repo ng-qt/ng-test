@@ -1,4 +1,4 @@
-# For local development
+#!/bin/bash
 NAME=${1:-ng-test}
 WORKDIR=/$NAME
 CMD=${2:-bash}

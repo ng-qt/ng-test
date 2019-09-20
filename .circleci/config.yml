@@ -1,52 +1,88 @@
 version: 2
 
 var_1: &job_defaults
-  environment:
-    NAME: ng-test-ci
-  machine:
-    docker_layer_caching: true
+  docker:
+    image: ngqt/qode
 
-var_2: &persist_workspace
-  persist_to_workspace:
-    root: .
-    paths:
-      - .
+var_2: &cache_key ng-test-yarn-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}
 
-var_3: &attach_workspace
+var_3: &apt_cache_key ng-test-apt-{{ checksum "WORKSPACE" }}
+
+var_4: &build_cache_key ng-test-build-{{ checksum "yarn.lock" }}-{{ checksum "WORKSPACE" }}
+
+var_5: &attach_workspace
   attach_workspace:
     at: /tmp/workspace
+
+var_6: &install_deps
+  run:
+    name: Install dependencies
+    command: ./install-deps.sh
+
+var_7: &restore_cache
+  restore_cache:
+    keys:
+      - *apt_cache_key
+      - *cache_key
+
+var_8: &restore_build_cache
+  restore_cache:
+    keys:
+      - *apt_cache_key
+      - *cache_key
+      - *build_cache_key
 
 jobs:
   setup:
     <<: *job_defaults
     steps:
       - checkout
+      - *restore_cache
       - run:
-          name: Setup environment
-          command: |
-            ./docker-dev.sh $NAME "yarn install:ci"
-      - *persist_workspace
+          name: Yarn install
+          command: yarn install:ci
+      - save_cache:
+          key: *cache_key
+          paths:
+            - ~/.cache/yarn
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./node_modules
 
   build:
     <<: *job_defaults
     steps:
       - checkout
       - *attach_workspace
+      - *restore_build_cache
+      - *install_deps
+      - save_cache:
+          key: *apt_cache_key
+          paths:
+            - /var/cache/apt
       - run:
           name: Build
-          command: |
-            ./docker-dev.sh $NAME "yarn build"
-      - *persist_workspace
+          command: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./build
+      - save_cache:
+          key: *build_cache_key
+          paths:
+            - ./build
+            - ./cmake-build-debug
 
   test:
     <<: *job_defaults
     steps:
       - checkout
       - *attach_workspace
+      - *restore_cache
       - run:
           name: Test
-          command: |
-            ./docker-dev.sh $NAME "yarn test:ci"
+          command: yarn test:ci
 
 workflows:
   version: 2
