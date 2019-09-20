@@ -2,8 +2,8 @@
   "name": "@ng-qt/qtest",
   "typings": "./index.d.ts",
   "main": "./index.js",
-  "gypfile": true,
   "scripts": {
+    "install:ci": "yarn install --frozen-lockfile",
     "build": "cmake-js compile",
     "test": "qode node_modules/.bin/jest --detectOpenHandles --forceExit",
     "test:ci": "yarn test --ci"

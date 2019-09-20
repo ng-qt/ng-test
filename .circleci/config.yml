@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Setup environment
           command: |
-            ./docker-dev.sh $NAME
+            ./docker-dev.sh $NAME "yarn install:ci"
       - *persist_workspace
 
   build:
@@ -35,7 +35,7 @@ jobs:
       - run:
           name: Build
           command: |
-            ./docker-dev.sh $NAME yarn build
+            ./docker-dev.sh $NAME "yarn build"
       - *persist_workspace
 
   test:
@@ -46,7 +46,7 @@ jobs:
       - run:
           name: Test
           command: |
-            ./docker-dev.sh $NAME yarn test:ci
+            ./docker-dev.sh $NAME "yarn test:ci"
 
 workflows:
   version: 2
