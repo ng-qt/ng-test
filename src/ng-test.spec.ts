@@ -7,24 +7,24 @@ describe('NgTest', () => {
 
   beforeEach(() => {
     widget = new QWidget();
-    ngTest = new NgTest(widget.native);
+    ngTest = new NgTest(widget);
   });
 
   describe('constructor', () => {
     it(`should throw an error if argument isn't an instance of NodeWidget`, () => {
       // @ts-ignore
-      expect(() => new NgTest()).toThrow('Expected an instance of NodeWidget');
+      expect(() => new NgTest()).toThrow('A Widget instance is required');
     });
 
     it('should not throw an error when providing an instance of NodeWidget as argument', () => {
-      expect(() => new NgTest(new QWidget().native)).not.toThrow();
+      expect(() => new NgTest(new QWidget())).not.toThrow();
     });
   });
 
   describe('keyPress', () => {
     it('should call with character', done => {
       const widget = new QWidget();
-      const ngTest = new NgTest(widget.native);
+      const ngTest = new NgTest(widget);
 
       const spy = jest.fn();
 
