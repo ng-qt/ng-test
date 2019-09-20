@@ -50,15 +50,8 @@ var_12: &build_apt_checksum
   run:
     name: Create checksums for build & apt
     command: |
-      echo $(ls install-deps.sh | md5sum) >> APT_CACHE_KEY
-      echo $(ls CMakeLists.txt | md5sum) >> BUILD_CACHE_KEY
-
-var_13: &persist_build_apt_checksum
-  persist_to_workspace:
-    root: .
-    paths:
-      - ./APT_CACHE_KEY
-      - ./BUILD_CACHE_KEY
+      echo $(cat install-deps.sh | md5sum) >> APT_CACHE_KEY
+      echo $(cat CMakeLists.txt | md5sum) >> BUILD_CACHE_KEY
 
 jobs:
   setup:
@@ -71,10 +64,11 @@ jobs:
           command: yarn install:ci
       - *save_cache
       - *build_apt_checksum
-      - *persist_build_apt_checksum
       - persist_to_workspace:
           root: .
           paths:
+            - ./APT_CACHE_KEY
+            - ./BUILD_CACHE_KEY
             - ./node_modules
 
   build:
@@ -101,7 +95,6 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
-      - *restore_build_cache
       - run:
           name: Test
           command: yarn test:ci
