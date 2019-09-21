@@ -2,17 +2,26 @@
 #include <napi.h>
 #include <QWidget>
 
-char strToChar(const Napi::Value &value) {
+char toChar(const Napi::Value &value) {
   std::string str = value.As<Napi::String>().Utf8Value();
-
-  /*if (str.length() > 1) {
-    return Napi::TypeError::New(env, "string must only contain a single character").ThrowAsJavaScriptException();
-  }*/
-
   return str[0];
 }
 
-Qt::Key numToKey(const Napi::Value &value) {
+int toInt(const Napi::Value &value) {
+  return value.As<Napi::Number>().Int32Value();
+}
+
+QString toQString(const Napi::Value &value) {
+  auto str = value.As<Napi::String>().Utf8Value();
+  return QString::fromUtf8(str.c_str());
+}
+
+Qt::Key toKey(const Napi::Value &value) {
   int key = value.As<Napi::Number>().Int32Value();
   return static_cast<Qt::Key>(key);
+}
+
+Qt::KeyboardModifier toModifier(const Napi::Value &value) {
+  int modifier = value.As<Napi::Number>().Int32Value();
+  return static_cast<Qt::KeyboardModifier>(modifier);
 }

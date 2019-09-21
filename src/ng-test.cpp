@@ -54,10 +54,10 @@ void NgTest::KeyPress(const Napi::CallbackInfo &info) {
   }
 
   if (info[0].IsNumber()) {
-    Qt::Key key = numToKey(info[0]);
+    Qt::Key key = toKey(info[0]);
     QTest::keyClick(_widget, key);
   } else if (info[0].IsString()) {
-    char key = strToChar(info[0]);
+    char key = toChar(info[0]);
     QTest::keyClick(_widget, key);
   } else {
     return throwInvalidKeyException(env);
@@ -75,10 +75,10 @@ void NgTest::KeyClick(const Napi::CallbackInfo &info) {
   }
 
   if (info[0].IsNumber()) {
-    Qt::Key key = numToKey(info[0]);
+    Qt::Key key = toKey(info[0]);
     QTest::keyClick(_widget, key);
   } else if (info[0].IsString()) {
-    char key = strToChar(info[0]);
+    char key = toChar(info[0]);
     QTest::keyClick(_widget, key);
   } else {
     return throwInvalidKeyException(env);
