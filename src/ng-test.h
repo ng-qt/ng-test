@@ -14,4 +14,6 @@ class NgTest : public Napi::ObjectWrap<NgTest> {
   void KeyClick(const Napi::CallbackInfo &info);
 
   void KeyPress(const Napi::CallbackInfo &info);
+
+  void KeyClicks(const Napi::CallbackInfo &info);
 };

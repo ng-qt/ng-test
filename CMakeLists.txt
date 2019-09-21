@@ -27,7 +27,7 @@ add_library(${PROJECT_NAME} SHARED
    "src/ng-test.cpp"
    "src/QWidgetWrap/qwidget_wrap.cpp"
    "src/utils.cpp"
-)
+   "src/exceptions.cpp")
 
 link_directories($ENV{QT_LIBRARIES})
 

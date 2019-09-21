@@ -15,6 +15,7 @@
 ### Methods
 
 * [keyClick](ngtest.md#keyclick)
+* [keyClicks](ngtest.md#keyclicks)
 * [keyPress](ngtest.md#keypress)
 
 ## Constructors
@@ -23,7 +24,7 @@
 
 \+ **new NgTest**(`widget`: NodeWidget): *[NgTest](ngtest.md)*
 
-*Defined in [index.d.ts:3](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L3)*
+*Defined in [index.d.ts:3](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L3)*
 
 Create a new simulation wrapper for widget
 
@@ -41,7 +42,7 @@ Name | Type |
 
 ▸ **keyClick**(`key`: string, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:15](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L15)*
+*Defined in [index.d.ts:16](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L16)*
 
 Simulates clicking of key with an optional modifier
 
@@ -60,7 +61,7 @@ Name | Type |
 
 ▸ **keyClick**(`key`: Key, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:23](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L23)*
+*Defined in [index.d.ts:25](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L25)*
 
 Simulates clicking of key with an optional modifier
 
@@ -79,11 +80,34 @@ Name | Type |
 
 ___
 
+###  keyClicks
+
+▸ **keyClicks**(`sequence`: string, `modifier?`: KeyboardModifier, `delay?`: number): *void*
+
+*Defined in [index.d.ts:51](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L51)*
+
+Simulates clicking a sequence of keys on a widget.
+Optionally, a keyboard modifier can be specified as well as a delay (in milliseconds) of the test before each key click.
+
+**`see`** {@https://doc.qt.io/qt-5/qtest.html#keyClicks}
+
+**Parameters:**
+
+Name | Type |
+------ | ------ |
+`sequence` | string |
+`modifier?` | KeyboardModifier |
+`delay?` | number |
+
+**Returns:** *void*
+
+___
+
 ###  keyPress
 
 ▸ **keyPress**(`key`: string, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:31](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L31)*
+*Defined in [index.d.ts:34](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L34)*
 
 Simulates pressing a key with an optional modifier
 
@@ -102,7 +126,7 @@ Name | Type |
 
 ▸ **keyPress**(`key`: Key, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:39](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L39)*
+*Defined in [index.d.ts:43](https://github.com/ng-qt/ng-test/blob/91bd09f/index.d.ts#L43)*
 
 Simulates pressing a key with an optional modifier
 
