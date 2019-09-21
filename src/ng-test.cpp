@@ -31,7 +31,9 @@ NgTest::NgTest(const Napi::CallbackInfo &info)
 
   try {
     Napi::Object nodeWidget = info[0].As<Napi::Object>();
-    QWidgetWrap *widgetWrap = Napi::ObjectWrap<QWidgetWrap>::Unwrap(nodeWidget);
+    Napi::Object native = nodeWidget.Get("native").As<Napi::Object>();
+
+    QWidgetWrap *widgetWrap = Napi::ObjectWrap<QWidgetWrap>::Unwrap(native);
     _widget = widgetWrap->getInternalInstance();
   } catch (...) {
     Napi::TypeError::New(env, "Expected an instance of NodeWidget")
@@ -39,6 +41,7 @@ NgTest::NgTest(const Napi::CallbackInfo &info)
   }
 }
 
+// TODO: Add Qt::KeyboardModifier
 void NgTest::KeyPress(const Napi::CallbackInfo &info) {
   Napi::Env env = info.Env();
   Napi::HandleScope scope(env);
@@ -62,6 +65,7 @@ void NgTest::KeyPress(const Napi::CallbackInfo &info) {
   }
 }
 
+// TODO: Add Qt::KeyboardModifier
 void NgTest::KeyClick(const Napi::CallbackInfo &info) {
   Napi::Env env = info.Env();
 
