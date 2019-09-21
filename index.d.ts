@@ -1,11 +1,34 @@
 import { Key, KeyboardModifier, NodeWidget } from '@nodegui/nodegui';
 
 export declare class NgTest {
+  /**
+   * Create a new simulation wrapper for widget
+   */
   constructor(widget: NodeWidget): NgTest;
-
-  keyClick(key: Key | string, modifier?: KeyboardModifier): void;
-
-  keyPress(key: Key | string, modifier?: KeyboardModifier): void;
-
-  // keyClicks(key: Key | string, modifier?: KeyboardModifier): void;
+  /**
+   * Simulates clicking of key with an optional modifier
+   *
+   * @see {@link https://doc.qt.io/qt-5/qtest.html#keyClick}
+   */
+  keyClick(key: string, modifier?: KeyboardModifier): void;
+  /**
+   * Simulates clicking of key with an optional modifier
+   *
+   * @see {@link https://doc.qt.io/qt-5/qtest.html#keyClick}
+   */
+  keyClick(key: Key, modifier?: KeyboardModifier): void;
+  /**
+   * Simulates pressing a key with an optional modifier
+   *
+   * @see {@link https://doc.qt.io/qt-5/qtest.html#keyPress}
+   *
+   * @example {@link https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#25}
+   */
+  keyPress(key: string, modifier?: KeyboardModifier): void;
+  /**
+   * Simulates pressing a key with an optional modifier
+   *
+   * @see {@link https://doc.qt.io/qt-5/qtest.html#keyPress}
+   */
+  keyPress(key: Key, modifier?: KeyboardModifier): void;
 }

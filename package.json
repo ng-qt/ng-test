@@ -4,19 +4,24 @@
   "main": "./index.js",
   "scripts": {
     "install:ci": "yarn install --frozen-lockfile",
+    "docs": "typedoc --excludeExternals --includeDeclarations --mode file --out docs index.d.ts",
     "build": "cmake-js compile",
     "test": "qode node_modules/.bin/jest --detectOpenHandles --forceExit",
     "test:ci": "yarn test --ci"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "yarn docs && yarn run lint-staged"
     }
   },
   "lint-staged": {
     "*.{cpp,h}": [
       "clang-format -i",
       "git add"
+    ],
+    "index.d.ts": [
+      "yarn run docs",
+      "git add docs/*"
     ],
     "*.{ts,js}": [
       "prettier --write",
@@ -37,6 +42,8 @@
     "lint-staged": "9.2.5",
     "prettier": "1.18.2",
     "ts-jest": "24.1.0",
+    "typedoc": "^0.15.0",
+    "typedoc-plugin-markdown": "^2.2.6",
     "typescript": "3.6.3"
   }
 }
