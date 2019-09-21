@@ -21,8 +21,13 @@ else()
 endif()
 
 # Build a shared library named after the project from the files in `src/`
-file(GLOB SOURCE_FILES "src/*.cpp" "src/*.h")
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+add_library(${PROJECT_NAME} SHARED 
+  "${CMAKE_JS_SRC}"
+   "src/main.cpp"
+   "src/ng-test.cpp"
+   "src/QWidgetWrap/qwidget_wrap.cpp"
+   "src/utils.cpp"
+)
 
 link_directories($ENV{QT_LIBRARIES})
 
@@ -32,6 +37,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
 target_include_directories(${PROJECT_NAME} PRIVATE
   ${CMAKE_SOURCE_DIR}/node_modules/node-addon-api
   ${CMAKE_SOURCE_DIR}/node_modules/node-addon-api/src
+  ${PROJECT_SOURCE_DIR}
   ${CMAKE_JS_INC})
 target_include_directories(${PROJECT_NAME} PRIVATE
   $ENV{QT_INCLUDE_DIRS}
