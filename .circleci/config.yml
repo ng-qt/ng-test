@@ -5,11 +5,11 @@ var_1: &job_defaults
   docker:
     - image: ngqt/qode
 
-var_2: &cache_key ng-test-yarn-{{ checksum "yarn.lock" }}
+var_2: &cache_key ng-test-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
-var_3: &apt_cache_key ng-test-apt-{{ checksum "APT_CACHE_KEY" }}
+var_3: &apt_cache_key ng-test-apt-{{ .Branch }}-{{ checksum "APT_CACHE_KEY" }}
 
-var_4: &build_cache_key ng-test-build-{{ checksum "yarn.lock" }}-{{ checksum "BUILD_CACHE_KEY" }}
+var_4: &build_cache_key ng-test-build-{{ .Branch }}-{{ checksum "BUILD_CACHE_KEY" }}
 
 var_5: &attach_workspace
   attach_workspace:
