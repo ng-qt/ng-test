@@ -23,7 +23,7 @@
 
 \+ **new NgTest**(`widget`: NodeWidget): *[NgTest](ngtest.md)*
 
-*Defined in [index.d.ts:3](https://github.com/ng-qt/ng-test/blob/b5e2458/index.d.ts#L3)*
+*Defined in [index.d.ts:3](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L3)*
 
 Create a new simulation wrapper for widget
 
@@ -41,11 +41,13 @@ Name | Type |
 
 ▸ **keyClick**(`key`: string, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:13](https://github.com/ng-qt/ng-test/blob/b5e2458/index.d.ts#L13)*
+*Defined in [index.d.ts:15](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L15)*
 
 Simulates clicking of key with an optional modifier
 
 **`see`** [https://doc.qt.io/qt-5/qtest.html#keyClick](https://doc.qt.io/qt-5/qtest.html#keyClick)
+
+**`example`** [https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#25](https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#25)
 
 **Parameters:**
 
@@ -58,11 +60,13 @@ Name | Type |
 
 ▸ **keyClick**(`key`: Key, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:19](https://github.com/ng-qt/ng-test/blob/b5e2458/index.d.ts#L19)*
+*Defined in [index.d.ts:23](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L23)*
 
 Simulates clicking of key with an optional modifier
 
 **`see`** [https://doc.qt.io/qt-5/qtest.html#keyClick](https://doc.qt.io/qt-5/qtest.html#keyClick)
+
+**`example`** [https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#34](https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#34)
 
 **Parameters:**
 
@@ -79,13 +83,13 @@ ___
 
 ▸ **keyPress**(`key`: string, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:27](https://github.com/ng-qt/ng-test/blob/b5e2458/index.d.ts#L27)*
+*Defined in [index.d.ts:31](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L31)*
 
 Simulates pressing a key with an optional modifier
 
 **`see`** [https://doc.qt.io/qt-5/qtest.html#keyPress](https://doc.qt.io/qt-5/qtest.html#keyPress)
 
-**`example`** [https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#25](https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#25)
+**`example`** [https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#45](https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#45)
 
 **Parameters:**
 
@@ -98,11 +102,13 @@ Name | Type |
 
 ▸ **keyPress**(`key`: Key, `modifier?`: KeyboardModifier): *void*
 
-*Defined in [index.d.ts:33](https://github.com/ng-qt/ng-test/blob/b5e2458/index.d.ts#L33)*
+*Defined in [index.d.ts:39](https://github.com/ng-qt/ng-test/blob/efec7ab/index.d.ts#L39)*
 
 Simulates pressing a key with an optional modifier
 
 **`see`** [https://doc.qt.io/qt-5/qtest.html#keyPress](https://doc.qt.io/qt-5/qtest.html#keyPress)
+
+**`example`** [https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#54](https://github.com/ng-qt/ng-test/blob/master/src/ng-test.spec.ts#54)
 
 **Parameters:**
 
