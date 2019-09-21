@@ -53,12 +53,23 @@ void NgTest::KeyPress(const Napi::CallbackInfo &info) {
     return throwInvalidArgumentsException(env);
   }
 
+  Qt::KeyboardModifier modifier = Qt::NoModifier;
+
+  if (!info[1].IsUndefined()) {
+    if (!info[1].IsNumber()) {
+      return throwInvalidModifierException(env);
+    }
+
+    modifier = toModifier(info[1]);
+  }
+
+
   if (info[0].IsNumber()) {
     Qt::Key key = toKey(info[0]);
-    QTest::keyClick(_widget, key);
+    QTest::keyClick(_widget, key, modifier);
   } else if (info[0].IsString()) {
     char key = toChar(info[0]);
-    QTest::keyClick(_widget, key);
+    QTest::keyClick(_widget, key, modifier);
   } else {
     return throwInvalidKeyException(env);
   }
@@ -74,12 +85,22 @@ void NgTest::KeyClick(const Napi::CallbackInfo &info) {
     return throwInvalidArgumentsException(env);
   }
 
+  Qt::KeyboardModifier modifier = Qt::NoModifier;
+
+  if (!info[1].IsUndefined()) {
+    if (!info[1].IsNumber()) {
+      return throwInvalidModifierException(env);
+    }
+
+    modifier = toModifier(info[1]);
+  }
+
   if (info[0].IsNumber()) {
     Qt::Key key = toKey(info[0]);
-    QTest::keyClick(_widget, key);
+    QTest::keyClick(_widget, key, modifier);
   } else if (info[0].IsString()) {
     char key = toChar(info[0]);
-    QTest::keyClick(_widget, key);
+    QTest::keyClick(_widget, key, modifier);
   } else {
     return throwInvalidKeyException(env);
         .ThrowAsJavaScriptException();
