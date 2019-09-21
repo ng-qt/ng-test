@@ -2,6 +2,7 @@
 #include "ng-test.h"
 #include "QWidgetWrap/qwidget_wrap.h"
 #include "utils.h"
+#include "exceptions.h"
 #include <QTest>
 #include <QWidget>
 #include <napi.h>
@@ -48,9 +49,8 @@ void NgTest::KeyPress(const Napi::CallbackInfo &info) {
 
   int len = info.Length();
 
-  if (len < 1 || len > 3) {
-    return Napi::TypeError::New(env, "Wrong number of arguments")
-        .ThrowAsJavaScriptException();
+  if (len < 1 || len > 2) {
+    return throwInvalidArgumentsException(env);
   }
 
   if (info[0].IsNumber()) {
@@ -60,8 +60,7 @@ void NgTest::KeyPress(const Napi::CallbackInfo &info) {
     char key = strToChar(info[0]);
     QTest::keyClick(_widget, key);
   } else {
-    return Napi::TypeError::New(env, "argument key must be a string")
-        .ThrowAsJavaScriptException();
+    return throwInvalidKeyException(env);
   }
 }
 
@@ -71,9 +70,8 @@ void NgTest::KeyClick(const Napi::CallbackInfo &info) {
 
   int len = info.Length();
 
-  if (len < 1 || len > 3) {
-    return Napi::TypeError::New(env, "Wrong number of arguments")
-        .ThrowAsJavaScriptException();
+  if (len < 1 || len > 2) {
+    return throwInvalidArgumentsException(env);
   }
 
   if (info[0].IsNumber()) {
@@ -83,7 +81,7 @@ void NgTest::KeyClick(const Napi::CallbackInfo &info) {
     char key = strToChar(info[0]);
     QTest::keyClick(_widget, key);
   } else {
-    return Napi::TypeError::New(env, "argument key must be a string")
+    return throwInvalidKeyException(env);
         .ThrowAsJavaScriptException();
   }
 }
