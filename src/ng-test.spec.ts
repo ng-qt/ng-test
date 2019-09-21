@@ -1,4 +1,4 @@
-import { Key, QWidget, QWidgetEvents } from '@nodegui/nodegui';
+import { Key, QKeyEvent, QWidget, QWidgetEvents } from '@nodegui/nodegui';
 import { NgTest } from '../index';
 
 describe('NgTest', () => {
@@ -21,37 +21,43 @@ describe('NgTest', () => {
     });
   });
 
-  describe('keyPress', () => {
-    it('should call with character', () => {
-      const widget = new QWidget();
-      const ngTest = new NgTest(widget);
+  describe('keyClick', () => {
+    it('should fire KeyPress event with character', () => {
+      widget.addEventListener(QWidgetEvents.KeyPress, (e) => {
+        const text = new QKeyEvent(e).text();
+        expect(text).toEqual('a');
+      });
 
-      const spy = jest.fn();
-
-      widget.addEventListener(QWidgetEvents.KeyPress, spy);
-
-      ngTest.keyPress('a');
-      expect(spy).toHaveBeenCalled();
-    });
-  });
-
-  /*describe('keyClick', () => {
-    let ngTest: NgTest;
-    let widget: QWidget;
-
-    beforeEach(() => {
-      widget = new QWidget();
-      ngTest = new NgTest(widget);
+      ngTest.keyClick('a');
     });
 
-    it('should call', (done) => {
-      widget.addEventListener(QWidgetEvents.MouseButtonDblClick, (event) => {
-        const keyEvent = new QKeyEvent(event);
-        console.log('YES');
-        done();
+    it('should fire KeyPress event with key', () => {
+      widget.addEventListener(QWidgetEvents.KeyPress, (e) => {
+        const text = new QKeyEvent(e).text();
+        expect(text).toEqual(Key.Key_1);
       });
 
       ngTest.keyClick(Key.Key_0);
     });
-  });*/
+  });
+
+  describe('keyPress', () => {
+    it('should fire KeyPress event with character', () => {
+      widget.addEventListener(QWidgetEvents.KeyPress, (e) => {
+        const text = new QKeyEvent(e).text();
+        expect(text).toEqual('b');
+      });
+
+      ngTest.keyPress('b');
+    });
+
+    it('should fire KeyPress event with key', () => {
+      widget.addEventListener(QWidgetEvents.KeyPress, (e) => {
+        const text = new QKeyEvent(e).text();
+        expect(text).toEqual(Key.Key_1);
+      });
+
+      ngTest.keyPress(Key.Key_1);
+    });
+  });
 });
