@@ -3,7 +3,7 @@ version: 2
 var_1: &job_defaults
   working_directory: ~/ng-test
   docker:
-    - image: ngqt/qode
+    - image: ngqt/qode:0.2.1
 
 var_2: &cache_key ng-test-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
 
