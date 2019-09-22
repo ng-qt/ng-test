@@ -33,7 +33,7 @@
     "node-addon-api": "1.7.1"
   },
   "devDependencies": {
-    "@nodegui/nodegui": "0.1.9",
+    "@nodegui/nodegui": "0.2.0",
     "@nodegui/qode": "1.0.5",
     "@types/jest": "24.0.18",
     "@types/node": "12.7.5",
