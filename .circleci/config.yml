@@ -100,6 +100,20 @@ jobs:
           name: Test
           command: yarn test:ci
 
+  publish-tag:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - *attach_workspace
+      - run:
+          name: Publish NPM package
+          command: |
+            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
+            PACKAGE_TAG=${CIRCLE_TAG/v/''}
+            yarn version $PACKAGE_TAG
+            yarn publish
+            git push --follow-tags
+
 workflows:
   version: 2
   default_workflow:
@@ -111,3 +125,11 @@ workflows:
       - test:
           requires:
             - build
+      - publish-tag:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
