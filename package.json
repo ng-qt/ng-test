@@ -3,7 +3,17 @@
   "typings": "./index.d.ts",
   "version": "0.0.0",
   "main": "./index.js",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "index.d.ts",
+    "CMakeLists.txt",
+    "index.js",
+    "src/**/*.cpp",
+    "src/**/*.h"
+  ],
   "scripts": {
+    "postinstall": "build",
     "install:ci": "yarn install --frozen-lockfile",
     "docs": "typedoc --excludeExternals --includeDeclarations --mode file --out docs index.d.ts",
     "build": "cmake-js compile",
