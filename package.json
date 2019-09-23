@@ -1,6 +1,7 @@
 {
   "name": "@ng-qt/ng-test",
   "typings": "./index.d.ts",
+  "version": "0.0.0",
   "main": "./index.js",
   "scripts": {
     "install:ci": "yarn install --frozen-lockfile",
