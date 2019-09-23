@@ -31,7 +31,8 @@ var_9: &save_apt_cache
   save_cache:
     key: *apt_cache_key
     paths:
-      - /var/cache/apt
+      - /var/cache/apt/archives
+      - /var/lib/apt/lists
 
 var_10: &save_build_cache
   save_cache:
