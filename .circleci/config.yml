@@ -112,10 +112,7 @@ jobs:
           name: Publish NPM package
           command: |
             npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
-            PACKAGE_TAG=${CIRCLE_TAG/v/''}
-            npm version $PACKAGE_TAG
-            npm publish --access public
-            git push --follow-tags
+            yarn publish --access public
 
 workflows:
   version: 2

@@ -13,8 +13,8 @@
     "src/**/*.h"
   ],
   "scripts": {
-    "postinstall": "if [ -z \"$CIRCLE_BRANCH\" ];then yarn build; endif; fi",
-    "install:ci": "yarn install --frozen-lockfile",
+    "postinstall": "if [ -z \"$IGNORE_CWD_INSTALL\" ];then yarn build; endif; fi",
+    "install:ci": "IGNORE_CWD_INSTALL=1 yarn install --frozen-lockfile",
     "docs": "typedoc --excludeExternals --includeDeclarations --mode file --out docs index.d.ts",
     "build": "cmake-js compile",
     "test": "qode node_modules/.bin/jest --detectOpenHandles --forceExit",
