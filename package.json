@@ -1,5 +1,5 @@
 {
-  "name": "@ng-qt/qtest",
+  "name": "@ng-qt/ng-test",
   "typings": "./index.d.ts",
   "main": "./index.js",
   "scripts": {
