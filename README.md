@@ -1,6 +1,21 @@
 # ng-test
 A test library for NodeGUI widgets
 
+### Features
+* [x] [keyClick](https://doc.qt.io/qt-5/qtest.html#keyClick)
+* [x] [keyPress](https://doc.qt.io/qt-5/qtest.html#keyPress)
+* [x] [keyClicks](https://doc.qt.io/qt-5/qtest.html#keyClicks)
+* [ ] [keyRelease](https://doc.qt.io/qt-5/qtest.html#keyPress)
+* [ ] [addColumn](https://doc.qt.io/qt-5/qtest.html#addColumn)
+* [ ] [addRow](https://doc.qt.io/qt-5/qtest.html#addRow)
+* [ ] [keyEvent](https://doc.qt.io/qt-5/qtest.html#keyEvent)
+* [ ] [mouseClick](https://doc.qt.io/qt-5/qtest.html#mouseClick)
+* [ ] [mouseMove](https://doc.qt.io/qt-5/qtest.html#mouseMove)
+* [ ] [mousePress](https://doc.qt.io/qt-5/qtest.html#mousePress)
+* [ ] [newRow](https://doc.qt.io/qt-5/qtest.html#newRow)
+* [ ] [mouseRelease](https://doc.qt.io/qt-5/qtest.html#mouseRelease)
+* [ ] [touchEvent](https://doc.qt.io/qt-5/qtest.html#touchEvent)
+
 ### Installation
 
 ### Usage
