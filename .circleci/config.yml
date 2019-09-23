@@ -105,6 +105,9 @@ jobs:
     steps:
       - checkout
       - *attach_workspace
+      - add_ssh_keys:
+          fingerprints:
+            - $SSH_FINGERPRINT
       - run:
           name: Publish NPM package
           command: |
