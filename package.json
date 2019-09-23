@@ -13,7 +13,7 @@
     "src/**/*.h"
   ],
   "scripts": {
-    "postinstall": "build",
+    "postinstall": "if [ -z \"$CIRCLE_BRANCH\" ];then yarn build; endif; fi",
     "install:ci": "yarn install --frozen-lockfile",
     "docs": "typedoc --excludeExternals --includeDeclarations --mode file --out docs index.d.ts",
     "build": "cmake-js compile",
