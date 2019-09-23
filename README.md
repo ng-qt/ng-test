@@ -2,7 +2,7 @@
 A test library for NodeGUI widgets
 
 ### Installation
-The recommended way of getting started with using `@ng-qt/ng-test` is by utilizing our [Qode image](https://github.com/ng-qt/qode-docker-image) for [Docker](https://docker.com), which will set up a completely development & testing ready environment for you to use.
+The recommended way of getting started is by utilizing our [Qode image](https://github.com/ng-qt/qode-docker-image) for [Docker](https://docker.com), which will set up a completely development & testing ready environment for you to use.
 > If you'd prefer not to use Docker, you'd need to specify the associated environment variables which can be found in the [environment section](https://github.com/ng-qt/qode-docker-image#environment) and install the dependencies specified in the prerequisites as well.
 
 ```sh
