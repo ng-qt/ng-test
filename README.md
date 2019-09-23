@@ -1,7 +1,23 @@
 # ng-test
 A test library for NodeGUI widgets
 
-### Features
+### Installation
+The recommended way of getting started with using `@ng-qt/ng-test` is by utilizing our [Qode image](https://github.com/ng-qt/qode-docker-image) for [Docker](https://docker.com), which will set up a completely development & testing ready environment for you to use.
+> If you'd prefer not to use Docker, you'd need to specify the associated environment variables which can be found in the [environment section](https://github.com/ng-qt/qode-docker-image#environment) and install the dependencies specified in the prerequisites as well.
+
+```sh
+$ yarn add -D @ng-qt/ng-test
+```
+
+#### Prerequisites
+* [Qt5](https://doc.qt.io/qt-5/qt5-intro.html)
+* [Node.js](https://nodejs.org)
+* [CMake](https://cmake.org)
+
+### Usage
+[API documentation](https://github.com/ng-qt/ng-test/docs/classes/ngtest.md)
+
+#### Features
 * [x] [keyClick](https://doc.qt.io/qt-5/qtest.html#keyClick)
 * [x] [keyPress](https://doc.qt.io/qt-5/qtest.html#keyPress)
 * [x] [keyClicks](https://doc.qt.io/qt-5/qtest.html#keyClicks)
@@ -16,11 +32,6 @@ A test library for NodeGUI widgets
 * [ ] [mouseRelease](https://doc.qt.io/qt-5/qtest.html#mouseRelease)
 * [ ] [touchEvent](https://doc.qt.io/qt-5/qtest.html#touchEvent)
 
-### Installation
-
-### Usage
-[API documentation](docs/classes/ngtest.md)
-
 ### Development
 The recommended way of getting started with contributing is using [Docker](https://docker.com)
 
@@ -31,8 +42,3 @@ Run the following command to start the **ng-test** development environment for [
 ```
 $ ./docker-dev.sh
 ```
-
-#### Requirements
-* [Docker](https://docker.com)
-* [Qt5](https://doc.qt.io/qt-5/qt5-intro.html)
-* [Node.js](https://nodejs.org)
