@@ -110,7 +110,7 @@ jobs:
           command: |
             npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
             PACKAGE_TAG=${CIRCLE_TAG/v/''}
-            yarn version $PACKAGE_TAG
+            yarn version --new-version $PACKAGE_TAG
             yarn publish
             git push --follow-tags
 
